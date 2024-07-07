@@ -27,9 +27,14 @@
 
     function startConnect() {
     clientID = "clientID - " + parseInt(Math.random() * 100);
-    host = "test.mosquitto.org";
-    port = "8081";  // Port WSS pour test.mosquitto.org
-    
+    //host = "test.mosquitto.org";
+     //host = "public.mqtthq.com";  
+     host = "broker.hivemq.com";   
+        //host = "broker.emqx.io";   
+     //port = "8081";  // Port WSS pour test.mosquitto.org
+     //port = "8081";  // Port WSS pour test.mosquitto.org
+     port = "8884";  // Port WSS pour broker.hivemq.com
+
     document.getElementById("messages").innerHTML += "<span>Connecting to " + host + " on port " + port + "</span><br>";
     document.getElementById("messages").innerHTML += "<span>Using the client Id " + clientID + " </span><br>";
     
