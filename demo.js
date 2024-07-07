@@ -1,5 +1,5 @@
 
-    
+    /*
     function startConnect(){
         clientID = "clientID - "+parseInt(Math.random() * 100);
         //host = "public.mqtthq.com";
@@ -23,7 +23,29 @@
     //       passwordId: passwordId
         });
     }
+    */
 
+    function startConnect() {
+    clientID = "clientID - " + parseInt(Math.random() * 100);
+    host = "test.mosquitto.org";
+    port = "8081";  // Port WSS pour test.mosquitto.org
+    
+    document.getElementById("messages").innerHTML += "<span>Connecting to " + host + " on port " + port + "</span><br>";
+    document.getElementById("messages").innerHTML += "<span>Using the client Id " + clientID + " </span><br>";
+    
+    // Utilisation de WSS
+    client = new Paho.MQTT.Client("wss://" + host + ":" + port + "/mqtt", clientID);
+    
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+    
+    client.connect({
+        onSuccess: onConnect,
+        useSSL: true
+        // userName: userId,
+        // passwordId: passwordId
+    });
+}
 
     function onConnect(){
         topic =  "Tempdata";     
@@ -150,4 +172,3 @@
             getSliderValue();
         });
     });
-
